@@ -2,7 +2,6 @@
 layout: post
 title:  "Construyendo servicios básicos en SpringBoot"
 categories: SprigBoot
-background: '/_img/CrarProyectoSB.gif'
 ---
 Objetivo: Crear una API que me permita: crear, listar, editar y eliminar Pokemons.
 
@@ -13,9 +12,9 @@ Solución:
 - **Nombre**: Suele ser el mismo valor que ingresemos en el campo "Artefacto" y nos sirve para nombrar el proyecto de una manera descriptiva y legible. 
 - **Descripción**: En este campo describimos el objetivo de nuestro proyecto.
 - **Nombre del paquete**: Nombre del paquete principal de la aplicación.
-<br>
-&#129488; **Importante**: escoger la dependencia "Spring Web", dado que ella nos permitirá construir la Api
 <img src="/blog/_img/createproject.gif" alt="" />
+<br>
+&#129488; **Importante**: escoger la dependencia "Spring Web", dado que ella nos permitirá construir la Api.
 
 2. Creamos el paquete "model" el cual contiene el modelo de la entidad que queremos representar, en este caso queremos una entidad que incluya el identidicador(Integer), nombre(String), habilidades(Array) y el estado(Boolean).
 <br>
@@ -29,7 +28,7 @@ Solución:
   - Método Post con la anotación [@PostMapping](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/PostMapping.html), junto al nombre que nos va apermitir cosumir el servicio, en este caso “/pokemon”, y el formato de los datos que vamos a recibir en “consumes”, en este caso " MediaType.APPLICATION_JSON_VALUE".
   - Método Put con la anotación [@PutMapping](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/PutMapping.html) junto al nombre que nos va a permitir cosumir el servicio, en este caso “/pokemon”, y el dato con el que vamos a identificar los valores que vamos a modificar. Por último, el formato de los datos que vamos a recibir con “consumes”, en este caso "MediaType.APPLICATION_JSON_VALUE".
   - Método Delete con la anotación [@DeleteMapping](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/DeleteMapping.html) junto al nombre que nos va apermitir consumir el servicio, en este caso “/pokemon”, y el dato con el que vamos a identificar el objeto que vamos a eliminar.
-4. Dado que tenemos anotaciones en el paquete "model" que Spring debe escanear, debemos agregar la anotación @ComponentScan(basePackages = {"com.pokemon.controller"}) en la clase principal.
+4. Dado que tenemos anotaciones en el paquete "controller" que Spring debe escanear, debemos agregar la anotación @ComponentScan(basePackages = {"com.pokemon.controller"}) en la clase principal.
 
 5. Realizamos pruebas en Postman validando que los endpoint funcionen de la menera esperada. Por ejemplo, al utilzar el método "Get" con la dirección "http://localhost:8080/pokemon" debería retornarnos un Json con todos los valores que hemos guardado de cierta entidad, en este caso los pokemons que hemos creado.
 <img src="/blog/_img/testApi.gif" alt="" />
@@ -188,3 +187,7 @@ public class controller {
 }
 {% endhighlight %}
 
+<br>
+Fuentes:
+- “Microservicios con Spring Boot, Cloud y Docker,” Udemy, 2024. https://www.udemy.com/course/microservicios-spring-boot-cloud/
+‌
